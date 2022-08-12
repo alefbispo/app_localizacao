@@ -1,3 +1,4 @@
+import 'package:app_localizacao/widgets/image_input.dart';
 import 'package:flutter/material.dart';
 
 class PlaceFormScreen extends StatefulWidget {
@@ -8,15 +9,49 @@ class PlaceFormScreen extends StatefulWidget {
 }
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
+  final _titleController = TextEditingController();
+
+void _submitForm(){
+
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Novo Lugar'),
-        
       ),
-      body: const Center(
-        child: Text('Form'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      controller: _titleController,
+                      decoration: const InputDecoration(
+                        labelText: 'Título',
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const ImageInput(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          RaisedButton.icon(
+            onPressed: _submitForm,
+            icon: const Icon(Icons.add),
+            label: const Text('Adicionar'),
+            color: Theme.of(context).colorScheme.secondary,
+            elevation: 0,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          )
+        ],
       ),
     );
   }

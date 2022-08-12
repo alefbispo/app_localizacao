@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Great Places',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.indigo,
-          visualDensity: VisualDensity.adaptivePlatformDensity),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo)
+              .copyWith(secondary: Colors.yellow)),
       home: const PlacesListScreen(),
       routes: {
         AppRoutes.PLACE_FORM: (ctx) => const PlaceFormScreen(),
