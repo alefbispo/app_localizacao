@@ -5,7 +5,7 @@ import 'package:app_localizacao/models/place.dart';
 import 'package:flutter/cupertino.dart';
 
 class GreatPlaces with ChangeNotifier {
-  List<Place> _itens = [];
+  final List<Place> _itens = [];
 
   List<Place> get items {
     return [..._itens];
@@ -18,12 +18,14 @@ class GreatPlaces with ChangeNotifier {
   Place itemByIndex(int index) {
     return _itens[index];
   }
+
+  var loc = PlaceLocation(latitude: 5, longitude: 5);
   void addPlace(String title, File image) {
     final newPlace = Place(
       id: Random().nextDouble().toString(),
       title: title,
       image: image,
-      location: null,
+      location: loc,
     );
 
     _itens.add(newPlace);
